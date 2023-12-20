@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7591414728982141640}
+  - component: {fileID: 3080687036212317721}
   m_Layer: 0
   m_Name: GemView
   m_TagString: Untagged
@@ -33,6 +34,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3080687036212317721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7591414728982141643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9286d35481cf46539a9170007f193cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IconSpriteRenderer: {fileID: 7591414730135165660}
+  BackgroundSpriteRenderer: {fileID: 7591414730546039083}
 --- !u!1 &7591414730135165662
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +59,7 @@ GameObject:
   - component: {fileID: 7591414730135165663}
   - component: {fileID: 7591414730135165660}
   m_Layer: 0
-  m_Name: IconImage
+  m_Name: IconSpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +143,7 @@ GameObject:
   - component: {fileID: 7591414730546039082}
   - component: {fileID: 7591414730546039083}
   m_Layer: 0
-  m_Name: BackgroundImage
+  m_Name: BackgroundSpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
