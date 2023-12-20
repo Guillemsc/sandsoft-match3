@@ -1,1 +1,2 @@
-# sandsoft-match3
+# guillem-sandsoft-match3
+https://github.com/Guillemsc/sandsoft-match3
