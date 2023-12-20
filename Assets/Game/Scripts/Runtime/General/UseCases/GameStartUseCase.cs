@@ -4,18 +4,18 @@ namespace Game.General.UseCases
 {
     public sealed class GameStartUseCase
     {
-        readonly GenerateAndSpawnLevelUseCase _generateAndSpawnLevelUseCase;
+        readonly RegenerateLevelUseCase _regenerateLevelUseCase;
 
         public GameStartUseCase(
-            GenerateAndSpawnLevelUseCase generateAndSpawnLevelUseCase
+            RegenerateLevelUseCase regenerateLevelUseCase
             )
         {
-            _generateAndSpawnLevelUseCase = generateAndSpawnLevelUseCase;
+            _regenerateLevelUseCase = regenerateLevelUseCase;
         }
 
         public void Execute()
         {
-            _generateAndSpawnLevelUseCase.Execute();
+            _regenerateLevelUseCase.Execute();
         }
     }
 }

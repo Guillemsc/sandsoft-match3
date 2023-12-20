@@ -16,8 +16,7 @@ namespace Game.RegenerateUi.Installers
         {
             builder.Bind<WhenRegenerateButtonPressedUseCase>()
                 .FromFunction(c => new WhenRegenerateButtonPressedUseCase(
-                    c.Resolve<ClearLevelUseCase>(),
-                    c.Resolve<GenerateAndSpawnLevelUseCase>()
+                    c.Resolve<RegenerateLevelUseCase>()
                 ))
                 .LinkButtonClick(RegenerateButton, o => o.Execute);
         }

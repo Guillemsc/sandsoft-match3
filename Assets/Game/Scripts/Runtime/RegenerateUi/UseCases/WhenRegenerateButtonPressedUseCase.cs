@@ -4,22 +4,18 @@ namespace Game.RegenerateUi.UseCases
 {
     public sealed class WhenRegenerateButtonPressedUseCase
     {
-        readonly ClearLevelUseCase _clearLevelUseCase;
-        readonly GenerateAndSpawnLevelUseCase _generateAndSpawnLevelUseCase;
+        readonly RegenerateLevelUseCase _regenerateLevelUseCase;
 
         public WhenRegenerateButtonPressedUseCase(
-            ClearLevelUseCase clearLevelUseCase, 
-            GenerateAndSpawnLevelUseCase generateAndSpawnLevelUseCase
+            RegenerateLevelUseCase regenerateLevelUseCase
             )
         {
-            _clearLevelUseCase = clearLevelUseCase;
-            _generateAndSpawnLevelUseCase = generateAndSpawnLevelUseCase;
+            _regenerateLevelUseCase = regenerateLevelUseCase;
         }
 
         public void Execute()
         {
-            _clearLevelUseCase.Execute();   
-            _generateAndSpawnLevelUseCase.Execute();
+            _regenerateLevelUseCase.Execute();   
         }
     }
 }

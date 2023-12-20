@@ -31,6 +31,7 @@ namespace Game.Gems.UseCases
         public GemView Execute(GemType type, Vector2 worldPosition)
         {
             GemView gemView = Object.Instantiate(_gemsConfiguration.GemViewPrefab, _generalSceneData.Root.transform);
+            gemView.gameObject.SetActive(false);
             gemView.transform.position = worldPosition;
             
             _gemViewsData.GemViews.Add(gemView);

@@ -1,7 +1,6 @@
 using Game.Generation.UseCases;
 using GUtils.Di.Builder;
 using GUtils.Randomization.Generators;
-using GUtilsUnity.Randomization.Generators;
 
 namespace Game.Generation.Installers
 {
@@ -9,9 +8,6 @@ namespace Game.Generation.Installers
     {
         public static void InstallGeneration(this IDiContainerBuilder builder)
         {
-            builder.Bind<IRandomGenerator>()
-                .FromInstance(new SeedRandomGenerator(1));
-            
             builder.Bind<GenerateLevelUseCase>()
                 .FromFunction(c => new GenerateLevelUseCase(
                     c.Resolve<GenerateNecessaryGemTypesForGridSizeUseCase>(),

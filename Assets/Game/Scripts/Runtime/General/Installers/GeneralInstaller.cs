@@ -2,6 +2,8 @@ using Game.General.Interactors;
 using Game.General.UseCases;
 using Game.Levels.UseCases;
 using GUtils.Di.Builder;
+using GUtils.Randomization.Generators;
+using GUtils.Tasks.Extensions;
 
 namespace Game.General.Installers
 {
@@ -16,8 +18,13 @@ namespace Game.General.Installers
 
             builder.Bind<GameStartUseCase>()
                 .FromFunction(c => new GameStartUseCase(
-                    c.Resolve<GenerateAndSpawnLevelUseCase>()
+                    c.Resolve<RegenerateLevelUseCase>()
                 ));
+            
+            builder.InstallAsyncTaskRunner();
+            
+            builder.Bind<IRandomGenerator>()
+                .FromInstance(new SeedRandomGenerator(1));
         }
     }
 }
