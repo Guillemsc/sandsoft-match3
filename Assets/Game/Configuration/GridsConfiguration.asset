@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GridsConfiguration
   m_EditorClassIdentifier: 
   TileSize: 1.8
-  GridSize: {x: 2, y: 8}
+  GridSize: {x: 8, y: 8}

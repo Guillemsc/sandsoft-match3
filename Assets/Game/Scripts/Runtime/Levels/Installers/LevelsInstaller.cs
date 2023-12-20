@@ -18,6 +18,11 @@ namespace Game.Levels.Installers
                     c.Resolve<SpawnGemViewUseCase>(),
                     c.Resolve<GetWorldPositionFromGridPositionUseCase>()
                 ));
+
+            builder.Bind<ClearLevelUseCase>()
+                .FromFunction(c => new ClearLevelUseCase(
+                    c.Resolve<DespawnAllGemViewsUseCase>()
+                ));
         }
     }
 }

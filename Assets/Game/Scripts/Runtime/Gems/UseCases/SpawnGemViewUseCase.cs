@@ -1,4 +1,5 @@
 using Game.Gems.Configurations;
+using Game.Gems.Datas;
 using Game.Gems.Enums;
 using Game.Gems.Views;
 using Game.General.Datas;
@@ -11,16 +12,19 @@ namespace Game.Gems.UseCases
     {
         readonly GemsConfiguration _gemsConfiguration;
         readonly GeneralSceneData _generalSceneData;
+        readonly GemViewsData _gemViewsData;
         readonly GetGemConfigurationByGemTypeUseCase _getGemConfigurationByGemTypeUseCase;
 
         public SpawnGemViewUseCase(
             GemsConfiguration gemsConfiguration,
             GeneralSceneData generalSceneData,
+            GemViewsData gemViewsData,
             GetGemConfigurationByGemTypeUseCase getGemConfigurationByGemTypeUseCase
             )
         {
             _gemsConfiguration = gemsConfiguration;
             _generalSceneData = generalSceneData;
+            _gemViewsData = gemViewsData;
             _getGemConfigurationByGemTypeUseCase = getGemConfigurationByGemTypeUseCase;
         }
 
@@ -28,6 +32,8 @@ namespace Game.Gems.UseCases
         {
             GemView gemView = Object.Instantiate(_gemsConfiguration.GemViewPrefab, _generalSceneData.Root.transform);
             gemView.transform.position = worldPosition;
+            
+            _gemViewsData.GemViews.Add(gemView);
             
             Optional<GemConfiguration> optionalGemConfiguration = _getGemConfigurationByGemTypeUseCase.Execute(type);
 
