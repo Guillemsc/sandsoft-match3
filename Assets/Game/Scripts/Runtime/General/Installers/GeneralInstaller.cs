@@ -1,5 +1,6 @@
 using Game.General.Interactors;
 using Game.General.UseCases;
+using Game.Levels.UseCases;
 using GUtils.Di.Builder;
 
 namespace Game.General.Installers
@@ -15,6 +16,7 @@ namespace Game.General.Installers
 
             builder.Bind<GameStartUseCase>()
                 .FromFunction(c => new GameStartUseCase(
+                    c.Resolve<GenerateAndSpawnLevelUseCase>()
                 ));
         }
     }

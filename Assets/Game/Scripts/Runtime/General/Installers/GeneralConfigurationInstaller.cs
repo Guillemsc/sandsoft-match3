@@ -1,5 +1,6 @@
 using Game.Gems.Configurations;
 using Game.General.Configurations;
+using Game.Grids.Configurations;
 using GUtils.Di.Builder;
 
 namespace Game.General.Installers
@@ -10,6 +11,7 @@ namespace Game.General.Installers
         {
             builder.Bind<GeneralConfiguration>().FromInstance(generalConfiguration);
             builder.Bind<GemsConfiguration>().FromInstance(generalConfiguration.GemsConfiguration);
+            builder.Bind<GridsConfiguration>().FromInstance(generalConfiguration.GridsConfiguration);
         }
     }
 }

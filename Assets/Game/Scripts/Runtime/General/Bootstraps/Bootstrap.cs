@@ -1,8 +1,10 @@
 using Game.Gems.Installers;
 using Game.General.Configurations;
-using Game.General.Grids.Installers;
 using Game.General.Installers;
 using Game.General.Interactors;
+using Game.Generation.Installers;
+using Game.Grids.Installers;
+using Game.Levels.Installers;
 using GUtils.Di.Contexts;
 using GUtils.Di.Installers;
 using GUtils.Disposing.Disposables;
@@ -35,6 +37,8 @@ namespace Game.General.Bootstraps
                 b.InstallGeneral();
                 b.InstallGems();
                 b.InstallGrids();
+                b.InstallGeneration();
+                b.InstallLevels();
             }));
 
             // Here we resolve our installation. This means that each object is going to be created.

@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ddee36aa7048078915540cdae0c67b, type: 3}
-  m_Name: GeneralConfiguration
+  m_Script: {fileID: 11500000, guid: e678ea03ae994249959402d93ddc7c79, type: 3}
+  m_Name: GridsConfiguration
   m_EditorClassIdentifier: 
-  GemsConfiguration: {fileID: 11400000, guid: 7f36868e03f94284da4dfa11627f2940, type: 2}
-  GridsConfiguration: {fileID: 11400000, guid: ec3f6abcac5090f419422dc6009ea4fd, type: 2}
+  TileSize: 1

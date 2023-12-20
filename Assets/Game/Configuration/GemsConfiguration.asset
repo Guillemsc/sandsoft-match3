@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06add1bb255940b0b71ef494754cc1d2, type: 3}
   m_Name: GemsConfiguration
   m_EditorClassIdentifier: 
+  GemViewPrefab: {fileID: 3080687036212317721, guid: 0f755291cf5336b4aac1ff689a5b4851, type: 3}
   Gems:
   - {fileID: 11400000, guid: bb102b6f240dd1c4ea95130a2533e5df, type: 2}
   - {fileID: 11400000, guid: fde4a8ed49358f44ab63f74972d6884a, type: 2}
