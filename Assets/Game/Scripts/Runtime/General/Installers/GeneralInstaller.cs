@@ -4,6 +4,7 @@ using Game.Levels.UseCases;
 using GUtils.Di.Builder;
 using GUtils.Randomization.Generators;
 using GUtils.Tasks.Extensions;
+using GUtilsUnity.Randomization.Generators;
 
 namespace Game.General.Installers
 {
@@ -24,7 +25,7 @@ namespace Game.General.Installers
             builder.InstallAsyncTaskRunner();
             
             builder.Bind<IRandomGenerator>()
-                .FromInstance(new SeedRandomGenerator(1));
+                .FromInstance(UnityRandomGenerator.Instance);
         }
     }
 }

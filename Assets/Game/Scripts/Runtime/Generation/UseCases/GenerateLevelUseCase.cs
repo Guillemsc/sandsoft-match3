@@ -9,14 +9,17 @@ namespace Game.Generation.UseCases
     {
         readonly GenerateNecessaryGemTypesForGridSizeUseCase _generateNecessaryGemTypesForGridSizeUseCase;
         readonly GenerateLevelFromNecessaryGemTypesUseCase _generateLevelFromNecessaryGemTypesUseCase;
+        readonly RandomSwapGemsThatAreInvalidUseCase _randomSwapGemsThatAreInvalidUseCase;
 
         public GenerateLevelUseCase(
             GenerateNecessaryGemTypesForGridSizeUseCase generateNecessaryGemTypesForGridSizeUseCase,
-            GenerateLevelFromNecessaryGemTypesUseCase generateLevelFromNecessaryGemTypesUseCase
+            GenerateLevelFromNecessaryGemTypesUseCase generateLevelFromNecessaryGemTypesUseCase,
+            RandomSwapGemsThatAreInvalidUseCase randomSwapGemsThatAreInvalidUseCase
             )
         {
             _generateNecessaryGemTypesForGridSizeUseCase = generateNecessaryGemTypesForGridSizeUseCase;
             _generateLevelFromNecessaryGemTypesUseCase = generateLevelFromNecessaryGemTypesUseCase;
+            _randomSwapGemsThatAreInvalidUseCase = randomSwapGemsThatAreInvalidUseCase;
         }
 
         public Dictionary<Vector2Int, GridGemData> Execute(Vector2Int gridSize)
@@ -27,6 +30,8 @@ namespace Game.Generation.UseCases
                 gridSize,
                 ref gems
             );
+            
+            _randomSwapGemsThatAreInvalidUseCase.Execute(ref level);
             
             return level;
         }

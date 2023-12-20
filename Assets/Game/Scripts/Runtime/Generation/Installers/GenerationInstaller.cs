@@ -11,7 +11,8 @@ namespace Game.Generation.Installers
             builder.Bind<GenerateLevelUseCase>()
                 .FromFunction(c => new GenerateLevelUseCase(
                     c.Resolve<GenerateNecessaryGemTypesForGridSizeUseCase>(),
-                    c.Resolve<GenerateLevelFromNecessaryGemTypesUseCase>()
+                    c.Resolve<GenerateLevelFromNecessaryGemTypesUseCase>(),
+                    c.Resolve<RandomSwapGemsThatAreInvalidUseCase>()
                 ));
 
             builder.Bind<GenerateNecessaryGemTypesForGridSizeUseCase>()
@@ -31,6 +32,15 @@ namespace Game.Generation.Installers
 
             builder.Bind<GetGemTypeForLevelGemsThatStillHaveLeftToPlaceUseCase>()
                 .FromFunction(c => new GetGemTypeForLevelGemsThatStillHaveLeftToPlaceUseCase());
+
+            builder.Bind<SwapLevelGemsUseCase>()
+                .FromFunction(c => new SwapLevelGemsUseCase());
+
+            builder.Bind<RandomSwapGemsThatAreInvalidUseCase>()
+                .FromFunction(c => new RandomSwapGemsThatAreInvalidUseCase(
+                    c.Resolve<IRandomGenerator>(),
+                    c.Resolve<SwapLevelGemsUseCase>()
+                ));
         }
     }
 }
