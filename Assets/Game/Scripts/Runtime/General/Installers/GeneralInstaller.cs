@@ -1,4 +1,5 @@
 using Game.General.Interactors;
+using Game.General.UseCases;
 using GUtils.Di.Builder;
 
 namespace Game.General.Installers
@@ -9,6 +10,11 @@ namespace Game.General.Installers
         {
             builder.Bind<IGameInteractor>()
                 .FromFunction(c => new GameInteractor(
+                    c.Resolve<GameStartUseCase>()
+                ));
+
+            builder.Bind<GameStartUseCase>()
+                .FromFunction(c => new GameStartUseCase(
                 ));
         }
     }

@@ -1,10 +1,19 @@
+using Game.General.UseCases;
+
 namespace Game.General.Interactors
 {
     public sealed class GameInteractor : IGameInteractor
     {
-        public void Start()
+        readonly GameStartUseCase _gameStartUseCase;
+
+        public GameInteractor(
+            GameStartUseCase gameStartUseCase
+            )
         {
-            throw new System.NotImplementedException();
+            _gameStartUseCase = gameStartUseCase;
         }
+
+        public void Start()
+            => _gameStartUseCase.Execute();
     }
 }
