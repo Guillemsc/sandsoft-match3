@@ -10,11 +10,31 @@ namespace Game.Generation.Installers
         public static void InstallGeneration(this IDiContainerBuilder builder)
         {
             builder.Bind<IRandomGenerator>()
-                .FromInstance(UnityRandomGenerator.Instance);
+                .FromInstance(new SeedRandomGenerator(1));
             
             builder.Bind<GenerateLevelUseCase>()
                 .FromFunction(c => new GenerateLevelUseCase(
+                    c.Resolve<GenerateNecessaryGemTypesForGridSizeUseCase>(),
+                    c.Resolve<GenerateLevelFromNecessaryGemTypesUseCase>()
                 ));
+
+            builder.Bind<GenerateNecessaryGemTypesForGridSizeUseCase>()
+                .FromFunction(c => new GenerateNecessaryGemTypesForGridSizeUseCase(
+                    c.Resolve<IRandomGenerator>()
+                ));
+
+            builder.Bind<GenerateLevelFromNecessaryGemTypesUseCase>()
+                .FromFunction(c => new GenerateLevelFromNecessaryGemTypesUseCase(
+                    c.Resolve<IRandomGenerator>(),
+                    c.Resolve<GetValidGemTypesForGridPositionUseCase>(),
+                    c.Resolve<GetGemTypeForLevelGemsThatStillHaveLeftToPlaceUseCase>()
+                ));
+
+            builder.Bind<GetValidGemTypesForGridPositionUseCase>()
+                .FromFunction(c => new GetValidGemTypesForGridPositionUseCase());
+
+            builder.Bind<GetGemTypeForLevelGemsThatStillHaveLeftToPlaceUseCase>()
+                .FromFunction(c => new GetGemTypeForLevelGemsThatStillHaveLeftToPlaceUseCase());
         }
     }
 }

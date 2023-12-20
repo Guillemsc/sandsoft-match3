@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e678ea03ae994249959402d93ddc7c79, type: 3}
   m_Name: GridsConfiguration
   m_EditorClassIdentifier: 
-  TileSize: 1
+  TileSize: 1.8
+  GridSize: {x: 2, y: 8}

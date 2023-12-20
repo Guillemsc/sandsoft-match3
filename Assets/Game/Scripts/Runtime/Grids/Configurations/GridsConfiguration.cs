@@ -6,5 +6,6 @@ namespace Game.Grids.Configurations
     public sealed class GridsConfiguration : ScriptableObject
     {
         [SerializeField] [Min(0f)] public float TileSize = 1f;
+        [SerializeField] public Vector2Int GridSize = new(8, 8);
     }
 }

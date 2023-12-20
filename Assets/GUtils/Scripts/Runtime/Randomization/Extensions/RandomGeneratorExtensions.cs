@@ -108,6 +108,88 @@ namespace GUtils.Randomization.Extensions
 
             return list.TryGet(randomIndex, out randomValue);
         }
+        
+        /// <summary>
+        /// Tries to retrieve a random value from the specified array HashSet the provided <see cref="IRandomGenerator"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of value in the HashSet.</typeparam>
+        /// <param name="randomGenerator">The random number generator to use.</param>
+        /// <param name="hashSet">The HashSet from which to retrieve a random value.</param>
+        /// <param name="randomValue">The randomly selected value from the array.</param>
+        /// <returns><c>true</c> if a random value was successfully retrieved; otherwise, <c>false</c>.</returns>
+        public static bool TryGetRandom<T>(this IRandomGenerator randomGenerator, HashSet<T> hashSet, out T randomValue)
+        {
+            int randomIndex = randomGenerator.NewInt(0, hashSet.Count);
+            
+            int currentIndex = 0;
+            foreach (T value in hashSet)
+            {
+                if (currentIndex == randomIndex)
+                {
+                    randomValue = value;
+                    return true;
+                }
+
+                currentIndex++;
+            }
+
+            randomValue = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to retrieve a random value from the specified Dictionary the provided <see cref="IRandomGenerator"/>.
+        /// </summary>
+        /// <param name="randomGenerator">The random number generator to use.</param>
+        /// <param name="dictionary">The Dictionary from which to retrieve a random value.</param>
+        /// <param name="randomValue">The randomly selected value from the Dictionary.</param>
+        /// <returns><c>true</c> if a random value was successfully retrieved; otherwise, <c>false</c>.</returns>
+        public static bool TryGetRandomValue<T, Y>(this IRandomGenerator randomGenerator, Dictionary<T, Y> dictionary, out Y randomValue)
+        {
+            int randomIndex = randomGenerator.NewInt(0, dictionary.Count);
+            
+            int currentIndex = 0;
+            foreach (Y value in dictionary.Values)
+            {
+                if (currentIndex == randomIndex)
+                {
+                    randomValue = value;
+                    return true;
+                }
+
+                currentIndex++;
+            }
+
+            randomValue = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to retrieve a random value from the specified Dictionary the provided <see cref="IRandomGenerator"/>.
+        /// </summary>
+        /// <param name="randomGenerator">The random number generator to use.</param>
+        /// <param name="dictionary">The Dictionary from which to retrieve a random value.</param>
+        /// <param name="randomKey">The randomly selected key from the Dictionary.</param>
+        /// <returns><c>true</c> if a random value was successfully retrieved; otherwise, <c>false</c>.</returns>
+        public static bool TryGetRandomKey<T, Y>(this IRandomGenerator randomGenerator, Dictionary<T, Y> dictionary, out T randomKey)
+        {
+            int randomIndex = randomGenerator.NewInt(0, dictionary.Count);
+            
+            int currentIndex = 0;
+            foreach (T value in dictionary.Keys)
+            {
+                if (currentIndex == randomIndex)
+                {
+                    randomKey = value;
+                    return true;
+                }
+
+                currentIndex++;
+            }
+
+            randomKey = default;
+            return false;
+        }
 
         /// <summary>
         /// Tries to retrieve a random value from the specified <see cref="Enum"/> type using the
